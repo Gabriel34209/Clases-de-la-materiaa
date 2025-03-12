@@ -3,7 +3,7 @@
 # Segunda dimensión: Semanas (4 semanas)
 # Tercera dimensión: Días de la semana (7 días)
 temperaturas = [
-    [   # Quito 1
+    [   # Cuenca 1
         [   # Semana 1
             {"day": "Lunes", "temp": 78},
             {"day": "Martes", "temp": 80},
@@ -41,7 +41,7 @@ temperaturas = [
             {"day": "Domingo", "temp": 91}
         ]
     ],
-    [   # Quito 2
+    [   # Guayaquil 2
         [   # Semana 1
             {"day": "Lunes", "temp": 62},
             {"day": "Martes", "temp": 64},
@@ -119,10 +119,10 @@ temperaturas = [
     ]
 ]
 
-# Calcular el promedio de temperaturas para cada ciudad y semana
-for ciudad in temperaturas:
-    for semana in ciudad:
-        suma = 0
-        for dia in semana:
-            suma += dia['temp']
-        print(suma)
+ciudades =["Cuenca 1","Guayaquil 2","Quito 3"]
+semanas =["Semana 1","Semana 2","Semana 3"]
+for ciudad_idx,ciudad in enumerate(temperaturas):
+    for semana_idx,semana in enumerate(ciudad):
+        suma_temperaturas= sum([dia["temp"] for dia in semana])
+        promedio = suma_temperaturas / len(semana)
+        print((f"promedio de las temperaturas {ciudades[ciudad_idx]}, semnas {semana_idx + 1}, promedio {promedio}"))
