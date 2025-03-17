@@ -1,7 +1,35 @@
-# Crear una matriz 3D para almacenar datos de temperaturas
-# Primera dimensión: Ciudades (3 ciudades)
-# Segunda dimensión: Semanas (4 semanas)
-# Tercera dimensión: Días de la semana (7 días)
+def calcular_promedio_temperaturas_por_ciudad(temperaturas):
+    """
+    Calcula la temperatura promedio de cada ciudad durante el período de tiempo dado.
+
+    Args:
+        temperaturas (list): Una lista anidada que contiene los datos de temperatura.
+                           La estructura es: [ciudad[semana[dia_temperatura]]].
+                           Cada 'dia_temperatura' es un diccionario con 'day' y 'temp'.
+
+    Returns:
+        dict: Un diccionario donde las claves son los nombres de las ciudades (Quito 1, Quito 2, etc.)
+              y los valores son las temperaturas promedio correspondientes.
+    """
+    promedios_por_ciudad = {}
+    for i, ciudad_data in enumerate(temperaturas):
+        nombre_ciudad = f"Quito {i + 1}"
+        total_temperaturas = 0
+        total_dias = 0
+        for semana_data in ciudad_data:
+            for dia_data in semana_data:
+                total_temperaturas += dia_data["temp"]
+                total_dias += 1
+
+        if total_dias > 0:
+            promedio = total_temperaturas / total_dias
+            promedios_por_ciudad[nombre_ciudad] = promedio
+        else:
+            promedios_por_ciudad[nombre_ciudad] = 0  # Evitar división por cero si no hay datos
+
+    return promedios_por_ciudad
+
+# Datos de temperaturas proporcionados
 temperaturas = [
     [   # Quito 1
         [   # Semana 1
@@ -119,10 +147,7 @@ temperaturas = [
     ]
 ]
 
-# Calcular el promedio de temperaturas para cada ciudad y semana
-for ciudad in temperaturas:
-    for semana in ciudad:
-        suma = 0
-        for dia in semana:
-            suma += dia['temp']
-        print(suma)
+# Llamar a la función y mostrar los resultados
+promedios = calcular_promedio_temperaturas_por_ciudad(temperaturas)
+for ciudad, promedio in promedios.items():
+    print(f"Temperatura promedio para {ciudad}: {promedio:.2f}")
