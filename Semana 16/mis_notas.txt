@@ -1,0 +1,4 @@
+Línea 1: Hoy me levante temprano a terminar de hacer mis tareas.
+Línea 2: Hoy tengo pruebas de cada materia.
+Línea 3: Hoy tuve el mejor partido el cual podría cambiar mi vida.
+Línea 4: Mañana empiezo los exámenes finales.
